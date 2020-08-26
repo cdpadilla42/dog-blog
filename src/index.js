@@ -3,13 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  Switch,
-} from '@apollo/client';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import Post from './posts/Post';
 import Posts from './posts/Posts';
 
 const client = new ApolloClient({
@@ -22,7 +18,8 @@ ReactDOM.render(
     <ApolloProvider client={client}>
       <Router>
         <Switch>
-          <Route path="/post/:id" component={Posts} />
+          <Route exact path="/" component={Posts} />
+          <Route path="/posts/:id" component={Post} />
         </Switch>
         {/* <App /> */}
       </Router>
