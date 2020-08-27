@@ -7,6 +7,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Post from './posts/Post';
 import Posts from './posts/Posts';
+import NewPost from './posts/NewPost';
 
 const client = new ApolloClient({
   uri: 'https://api-us-east-1.graphcms.com/v2/cke9a14tdu90t01z64k79byow/master',
@@ -19,6 +20,7 @@ ReactDOM.render(
       <Router>
         <Switch>
           <Route exact path="/" component={Posts} />
+          <Route exact path="/new" component={NewPost} />
           <Route path="/posts/:id" component={Post} />
         </Switch>
         {/* <App /> */}

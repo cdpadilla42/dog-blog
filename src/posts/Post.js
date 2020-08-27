@@ -20,7 +20,7 @@ function PostQuery(props) {
   `;
 
   console.log('hello from function!', props.postID);
-  const { loading, data } = useQuery(GET_POST, {
+  const { loading, data, error } = useQuery(GET_POST, {
     variables: { id: props.postID },
   });
   if (loading) return 'loading...';
