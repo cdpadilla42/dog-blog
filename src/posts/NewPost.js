@@ -35,8 +35,14 @@ class NewPost extends Component {
                 }}
                 validate={(values) => {
                   const errors = {};
+                  const isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(
+                    values.postalCode
+                  );
                   if (!values.postalCode) {
                     errors.postalCode = 'Required';
+                  } else if (!isValidZip) {
+                    errors.postalCode =
+                      'Please enter a valid 5 or 9 digit zip code.';
                   }
                   return errors;
                 }}
