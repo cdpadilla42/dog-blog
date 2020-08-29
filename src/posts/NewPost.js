@@ -12,6 +12,7 @@ import {
   Label,
   Input,
   FormText,
+  FormFeedback,
 } from 'reactstrap';
 
 class NewPost extends Component {
@@ -34,9 +35,8 @@ class NewPost extends Component {
                 }}
                 validate={(values) => {
                   const errors = {};
-                  if (!values.street) {
-                    errors.street = 'Required';
-                    console.log('street required');
+                  if (!values.postalCode) {
+                    errors.postalCode = 'Required';
                   }
                   return errors;
                 }}
@@ -113,7 +113,13 @@ class NewPost extends Component {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.postalCode}
+                        invalid={
+                          errors.postalCode && touched.postalCode ? true : false
+                        }
                       />
+                      {errors.postalCode && touched.postalCode && (
+                        <FormFeedback>{errors.postalCode}</FormFeedback>
+                      )}
                     </FormGroup>
                     <FormGroup>
                       <Label for="residence">Residence</Label>
