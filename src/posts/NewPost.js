@@ -134,7 +134,13 @@ class NewPost extends Component {
                       />
                     </FormGroup>
 
-                    <Button color="success">Submit</Button>
+                    <Button
+                      color="success"
+                      // checking to see if there are errors before submiting
+                      disabled={Object.keys(errors).length ? true : false}
+                    >
+                      Submit
+                    </Button>
                   </Form>
                 )}
               </Formik>
