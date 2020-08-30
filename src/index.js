@@ -21,7 +21,7 @@ ReactDOM.render(
       <Router>
         <Switch>
           <Route exact path="/" component={Posts} />
-          <Route exact path="/new" component={NewPost} />
+          <Route exact path="/posts/new" component={NewPost} />
           <Route path="/posts/:id" component={Post} />
         </Switch>
         {/* <App /> */}

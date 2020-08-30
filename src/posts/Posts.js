@@ -34,7 +34,7 @@ class Posts extends Component {
     return (
       <>
         <PostsQuery />
-        <Link to={'/new'}>
+        <Link to={'/posts/new'}>
           <a>New Post</a>
         </Link>
       </>
