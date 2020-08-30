@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const PostForm = (props) => {
   const { onSubmit, loading, error } = props;
@@ -43,6 +44,12 @@ const PostForm = (props) => {
       {error ? 'Error!' : ''}
     </form>
   );
+};
+
+PostForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
+  error: PropTypes.object,
 };
 
 export default PostForm;
