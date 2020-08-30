@@ -9,9 +9,7 @@ const GET_POSTS = gql`
       stage
       id
       title
-      body {
-        text
-      }
+      body
     }
   }
 `;

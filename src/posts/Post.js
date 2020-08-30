@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { gql, useQuery } from '@apollo/client';
+import UpdatePost from './UpdatePost';
 
 class Post extends Component {
   postID = this.props.match.params.id;
@@ -15,6 +16,7 @@ function PostQuery(props) {
       post(where: { id: $id }) {
         id
         title
+        body
       }
     }
   `;
@@ -29,8 +31,15 @@ function PostQuery(props) {
 
   return (
     <>
-      <h1>Here's your post bruh</h1>
-      <h2>{post.title}</h2>
+      <section>
+        <h1>Here's your post bruh</h1>
+        <h2>{post.title}</h2>
+        <p>{post.body}</p>
+      </section>
+      <section>
+        <h1>Edit Post</h1>
+        <UpdatePost />
+      </section>
     </>
   );
 }
