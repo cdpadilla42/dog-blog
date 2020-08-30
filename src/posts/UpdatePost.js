@@ -2,7 +2,13 @@ import React from 'react';
 import PostForm from './PostForm';
 import { gql, useMutation } from '@apollo/client';
 
-const UpdatePost = () => {
+const UpdatePost = (props) => {
+  const { id } = props;
+  const handleUpdate = (varObj) => {
+    varObj.variables.id = id;
+    updatePost(varObj);
+  };
+
   const [updatePost, { loading, error }] = useMutation(
     UPDATE_POST
     //   {
@@ -14,15 +20,12 @@ const UpdatePost = () => {
     // }
   );
 
-  return <PostForm />;
+  return <PostForm onSubmit={handleUpdate} />;
 };
 
 const UPDATE_POST = gql`
-  mutation updatePost($id: String!, $body: String, $title: String) {
-    updatePost(
-      where: { id: $id }
-      data: { title: $title, body: $body, status: PUBLISHED }
-    ) {
+  mutation updatePost($id: ID!, $body: String!, $title: String!) {
+    updatePost(where: { id: $id }, data: { title: $title, body: $body }) {
       id
       title
       body
