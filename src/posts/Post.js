@@ -38,7 +38,7 @@ function PostQuery(props) {
       </section>
       <section>
         <h1>Edit Post</h1>
-        <UpdatePost id={post.id} />
+        <UpdatePost post={post} />
       </section>
     </>
   );

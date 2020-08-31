@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 const PostForm = (props) => {
   const { onSubmit, loading, error } = props;
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  const [title, setTitle] = useState(props.post.title || '');
+  const [body, setBody] = useState(props.post.body || '');
+  const [id] = useState(props.post.id || '');
   const handleInput = (e) => {
     if (e.target.name === 'body') return setBody(e.target.value);
     setTitle(e.target.value);
@@ -17,6 +18,7 @@ const PostForm = (props) => {
           variables: {
             title,
             body,
+            id,
           },
         });
       }}
@@ -50,6 +52,11 @@ PostForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   error: PropTypes.object,
+  post: PropTypes.object,
+};
+
+PostForm.defaultProps = {
+  post: {},
 };
 
 export default PostForm;

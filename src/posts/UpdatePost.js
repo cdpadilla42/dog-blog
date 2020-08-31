@@ -4,10 +4,8 @@ import { gql, useMutation } from '@apollo/client';
 
 const UpdatePost = (props) => {
   const { id } = props;
-  const handleUpdate = (varObj) => {
-    varObj.variables.id = id;
-    updatePost(varObj);
-  };
+
+  const { post } = props;
 
   const [updatePost, { loading, error }] = useMutation(
     UPDATE_POST
@@ -20,7 +18,7 @@ const UpdatePost = (props) => {
     // }
   );
 
-  return <PostForm onSubmit={handleUpdate} />;
+  return <PostForm post={post} onSubmit={updatePost} />;
 };
 
 const UPDATE_POST = gql`
