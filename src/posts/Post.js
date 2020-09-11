@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import UpdatePost from './UpdatePost';
+import { isEditMode } from '../cache';
 
 class Post extends Component {
   postID = this.props.match.params.id;
@@ -46,6 +47,7 @@ function PostQuery(props) {
           <p>{post.body}</p>
         </section>
       )}
+      <button onClick={() => isEditMode(!isEditMode())}>Edit Mode</button>
     </>
   );
 }
