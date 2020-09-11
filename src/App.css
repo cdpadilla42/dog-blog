@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 100px;
   pointer-events: none;
 }
 
@@ -14,16 +14,20 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #524763;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  text-align: center;
 }
 
+.App-header a {
+  text-decoration: none;
+}
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +39,43 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+main {
+  width: 90%;
+  margin: 1rem auto;
+}
+
+.button {
+  text-decoration: none;
+  background: #524763;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.posts-listing {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  font-size: 1.6rem;
+}
+
+.posts-listing li {
+  margin-bottom: 2rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+input {
+  font-size: 1.6rem;
+}
+
+textarea {
+  font-size: 1.2rem;
+  height: 50vh;
 }

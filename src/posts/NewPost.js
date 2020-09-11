@@ -16,12 +16,6 @@ import {
 } from 'reactstrap';
 
 const NewPost = () => {
-  const onSubmit = (varObject) => {
-    addPost({
-      varObject,
-    });
-  };
-
   const [addPost, { loading, error }] = useMutation(
     NEW_POST
     //   {

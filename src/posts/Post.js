@@ -18,6 +18,7 @@ function PostQuery(props) {
         title
         body
       }
+      editMode @client
     }
   `;
 
@@ -27,19 +28,24 @@ function PostQuery(props) {
   });
   if (loading) return 'loading...';
 
-  const { post } = data;
+  console.log('data', data);
+
+  const { post, editMode } = data;
 
   return (
     <>
-      <section>
-        <h1>Here's your post bruh</h1>
-        <h2>{post.title}</h2>
-        <p>{post.body}</p>
-      </section>
-      <section>
-        <h1>Edit Post</h1>
-        <UpdatePost post={post} />
-      </section>
+      {editMode ? (
+        <section>
+          <h1>Edit Post</h1>
+          <UpdatePost post={post} />
+        </section>
+      ) : (
+        <section>
+          <h1>Here's your post bruh</h1>
+          <h2>{post.title}</h2>
+          <p>{post.body}</p>
+        </section>
+      )}
     </>
   );
 }

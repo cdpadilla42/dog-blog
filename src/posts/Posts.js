@@ -22,7 +22,7 @@ function PostsQuery() {
 
   return posts.map((post) => (
     <Link key={post.id} to={`/posts/${post.id}`}>
-      <h3>{post.title}</h3>
+      <li>{post.title}</li>
     </Link>
   ));
 }
@@ -31,10 +31,12 @@ class Posts extends Component {
   render() {
     return (
       <>
-        <PostsQuery />
-        <Link to={'/posts/new'}>
+        <Link className="button" to={'/posts/new'}>
           <a>New Post</a>
         </Link>
+        <ul className="posts-listing">
+          <PostsQuery />
+        </ul>
       </>
     );
   }

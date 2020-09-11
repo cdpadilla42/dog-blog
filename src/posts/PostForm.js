@@ -41,7 +41,7 @@ const PostForm = (props) => {
         value={body}
         onChange={handleInput}
       ></textarea>
-      <button>Submit</button>
+      <button className="button">Submit</button>
       {loading ? 'Loading...' : ''}
       {error ? 'Error!' : ''}
     </form>
