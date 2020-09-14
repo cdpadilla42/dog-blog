@@ -23,13 +23,10 @@ function PostQuery(props) {
     }
   `;
 
-  console.log('hello from function!', props.postID);
   const { loading, data, error } = useQuery(GET_POST, {
     variables: { id: props.postID },
   });
   if (loading) return 'loading...';
-
-  console.log('data', data);
 
   const { post, editMode } = data;
 
