@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 // Writing the query
 const GET_POSTS = gql`
-  query allPosts {
-    posts {
+  query allPosts($skip: Int) {
+    posts(orderBy: createdAt_DESC, first: 5, skip: $skip) {
       stage
       id
       title
@@ -15,16 +15,39 @@ const GET_POSTS = gql`
 `;
 
 function PostsQuery() {
-  const { loading, data } = useQuery(GET_POSTS);
+  const { loading, data, fetchMore } = useQuery(GET_POSTS);
   if (loading) return 'loading...';
 
   const { posts } = data;
 
-  return posts.map((post) => (
-    <Link key={post.id} to={`/posts/${post.id}`}>
-      <li>{post.title}</li>
-    </Link>
-  ));
+  return (
+    <>
+      {posts.map((post) => (
+        <Link key={post.id} to={`/posts/${post.id}`}>
+          <li>{post.title}</li>
+        </Link>
+      ))}
+      <li>
+        <button
+          onClick={() => {
+            fetchMore({
+              variables: {
+                skip: 10,
+              },
+              updateQuery: (prev, { fetchMoreResult }) => {
+                if (!fetchMoreResult) return prev;
+                return Object.assign({}, prev, {
+                  posts: [...prev.posts, ...fetchMoreResult.posts],
+                });
+              },
+            });
+          }}
+        >
+          Load More
+        </button>
+      </li>
+    </>
+  );
 }
 
 class Posts extends Component {
