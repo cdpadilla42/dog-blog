@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // Writing the query
 const GET_POSTS = gql`
   query allPosts($skip: Int) {
-    posts(orderBy: createdAt_DESC, first: 5, skip: $skip) {
+    posts(orderBy: createdAt_DESC, first: 2, skip: $skip) {
       stage
       id
       title
@@ -32,7 +32,7 @@ function PostsQuery() {
           onClick={() => {
             fetchMore({
               variables: {
-                skip: 10,
+                skip: posts.length,
               },
               updateQuery: (prev, { fetchMoreResult }) => {
                 if (!fetchMoreResult) return prev;
