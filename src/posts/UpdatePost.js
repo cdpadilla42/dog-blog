@@ -25,6 +25,9 @@ const UPDATE_POST = gql`
       title
       body
     }
+    publishPost(where: { id: $id }) {
+      id
+    }
   }
 `;
 

@@ -20,6 +20,15 @@ const PostForm = (props) => {
             body,
             id,
           },
+          optimisticResponse: {
+            __typename: 'Mutation',
+            updatePost: {
+              id: id,
+              __typename: 'Post',
+              title,
+              body,
+            },
+          },
         });
       }}
     >
